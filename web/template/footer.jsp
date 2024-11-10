@@ -17,11 +17,8 @@
 
     <footer class="bg-light mt-5">
         <div class="container">
-            <div class="row py-3 text-center">
-                <div class="col-md-4">
+            <div class="py-3 text-center">
                     <p>© 2024 Bookstore. All rights reserved.</p>
-                </div>
-
             </div>
         </div>
     </footer>

@@ -5,11 +5,20 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="./Bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
-    <style>
+       <style>
       .search-box {
-        width: 250px;
-        border: 1px solid #fff;
+        width: 300px;
+        border: 1px solid #ced4da;
         border-radius: 5px;
+      }
+      .navbar-center {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+      }
+      .navbar-center form {
+        display: flex;
+        align-items: center;
       }
     </style>
   </head>
@@ -32,6 +41,13 @@
             </li>
           </ul>
 
+          <div class="navbar-center">
+            <form class="d-flex" action="./search.jsp" method="GET">
+              <input class="form-control me-2 search-box" type="search" name="search" placeholder="Search books..." aria-label="Search">
+              <button class="btn btn-outline-primary" type="submit" hidden>Search</button>
+            </form>
+          </div>
+            
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <a class="nav-link position-relative" href="./cart.jsp">
