@@ -84,7 +84,7 @@
 
           <form action="signup.jsp" method="post" onsubmit="<%= isAdmin ? "return confirmAdminAction()" : "" %>">
             <% if (isAdmin) { %>
-            <script> document.getElemntById("head").innerHTML = "ลงทะเบียนพนักงาน";</script>
+            <script> document.getElementById("head").innerHTML = "Register Employee";</script>
               <div class="form-group">
                   <label for="firstName">First name:</label>
                   <input type="text" name="firstName" id="firstName" placeholder="First Name" class="form-control mt-2" required />

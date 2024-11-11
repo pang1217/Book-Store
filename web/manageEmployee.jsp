@@ -23,8 +23,12 @@
         %>
     <section class="w-75 mx-auto">
         <h1>Manage Employee</h1>
-        <input type="text" id="empSearch" placeholder="Search Employee">
-        <a href="./signup.jsp"><button class="btn btn-primary">Add Employee</button></a>
+        
+         <div class="mb-3 d-flex">
+            <input type="text" id="empSearch" placeholder="Search Employee..." class="form-control w-50">
+            <a href="./signup.jsp" class="btn btn-success ms-2">Add Employee</a>
+        </div>
+        
         <div>
             <table class="table table-striped table-bordered">
                 <thead>
