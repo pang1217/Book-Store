@@ -11,6 +11,7 @@
         <jsp:include page="./template/navbar.jsp"></jsp:include>
 
         <%
+            String user = (String) session.getAttribute("user"); 
             String bookId = request.getParameter("bookid");
             Connection conn = (new database.connect()).getC();
             String sql = "SELECT * FROM Books WHERE bookid = ?";
@@ -53,7 +54,6 @@
                         <!-- Add to Cart Button -->
                         <%
                             if (qtyInStock != 0) {
-                                String user = (String) session.getAttribute("user");
                                 if (user != null) {
                         %>
                         <button class="btn btn-primary mt-3" id="addToCartBtn" 
@@ -95,6 +95,7 @@
         
         <script>
             document.getElementById('addToCartBtn').addEventListener('click', function () {
+                const user = '<%= user %>';
                 const bookID = this.getAttribute('data-bookid');
                 const title = this.getAttribute('data-title');
                 const quantity = parseInt(document.getElementById('quantity').value);
@@ -104,7 +105,8 @@
                     quantity: quantity
                 };
 
-                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                let cart = JSON.parse(localStorage.getItem(`cart_${user}`)) || [];
+
                 const existingItemIndex = cart.findIndex(item => item.id === bookID);
                 if (existingItemIndex > -1) {
                     cart[existingItemIndex].quantity += quantity;
@@ -114,7 +116,7 @@
 
                 console.log(cart);
 
-                localStorage.setItem('cart', JSON.stringify(cart));
+                localStorage.setItem(`cart_${user}`, JSON.stringify(cart));
                 alert(title + " has been added to your cart.");
             });
         </script>

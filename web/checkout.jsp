@@ -67,7 +67,7 @@
         </section>
         <jsp:include page="./template/footer.jsp"></jsp:include>
            <script>
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cart = JSON.parse(localStorage.getItem(`cart_${user}`)) || [];
             const cartTableBody = document.getElementById('cartTableBody');
             const hiddenInputsContainer = document.getElementById('hiddenInputsContainer');
             let grandTotal = 0;
