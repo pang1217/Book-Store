@@ -6,6 +6,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Profile</title>
         <link rel="stylesheet" href="./Bootstrap/css/bootstrap.min.css" />
+        <script src="./Bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="./jquery/jquery-3.7.1.min"></script>
         <style>
             .nav-link.active {
                 font-weight: bold;
@@ -64,11 +66,20 @@
                         <div class="tab-pane fade" id="menu3" role="tabpanel" aria-labelledby="menu3-tab">
                             <h4>การซื้อของฉัน</h4>
                             <hr>
-                            <div class="d-flex align-items-center">
-                                <label for="orderSearch" class="me-2">ค้นหาใบสั่งซื้อ :</label>
-                                <input type="text" id="orderSearch" class="form-control" placeholder="ค้นหาใบสั่งซื้อ" style="width: 200px;">
-                            </div>
                             
+                            <div class="mb-3 d-flex flex-column">
+                                ค้นหาจากหมายเลขใบสั่งซื้อ : <input type="text" id="orderSearch" placeholder="Search Order ID" class="form-control mb-2 w-50">
+                                ค้นหาจากหมายสถานะใบสั่งซื้อ :
+                                <select id="statusFilter" class="form-select ps-3 w-50">
+                                    <option value="">All Statuses</option>
+                                    <option value="รอชำระ">รอชำระ</option>
+                                    <option value="รอตรวจสอบการชำระเงิน">รอตรวจสอบการชำระเงิน</option>
+                                    <option value="กำลังเตรียมจัดส่ง">กำลังเตรียมจัดส่ง</option>
+                                    <option value="จัดส่ง">จัดส่ง</option>
+                                    <option value="ยกเลิก">ยกเลิก</option>
+                                </select>
+                            </div>
+
                             <div>
                                 <table class="table table-striped table-bordered my-3">
                                     <thead>
@@ -82,9 +93,7 @@
                                     <tbody id="orderTable">
                                     <%
                                         try (
-                                                Connection c = (new database.connect()).getC();
-                                                Statement stmt = c.createStatement(); 
-                                                ResultSet rs = stmt.executeQuery("select * from orders where userId = '" + user + "' order by orderDate desc")){ 
+                                                Connection c = (new database.connect()).getC(); Statement stmt = c.createStatement(); ResultSet rs = stmt.executeQuery("select * from orders where userId = '" + user + "' order by orderDate desc")) {
                                             while (rs.next()) {
                                                 String OrderID = rs.getString("OrderID");
                                                 String orderDate = rs.getString("orderDate");
@@ -95,10 +104,10 @@
                                         <td><%= orderDate%></td>
                                         <td><%= status%></td>
                                         <td>
-                                            
-                                            <a href="./orderDetail.jsp?orderID=<%= OrderID%>" class="btn btn-danger">View</a>
-                                            <% if (status.equals("รอชำระ")) { %>
-                                            <a href="./payment.jsp?orderID=<%= OrderID%>" class="btn btn-danger">Upload Payment</a>
+
+                                            <a href="./orderDetail.jsp?orderID=<%= OrderID%>" class="btn btn-info">View</a>
+                                            <% if (status.equals("รอชำระ")) {%>
+                                            <a href="./payment.jsp?orderID=<%= OrderID%>" class="btn btn-primary">Upload Payment</a>
                                             <a href="./cancel.jsp?orderID=<%= OrderID%>" class="btn btn-danger" onclick="return confirmCancel()">cancel</a>
                                             <% } %>
                                         </td>
@@ -117,8 +126,24 @@
             </div>
         </section>
 
-<jsp:include page="./template/footer.jsp"></jsp:include>
+        <jsp:include page="./template/footer.jsp"></jsp:include>
+        <script>
+            $(document).ready(function () {
+                function filterOrders() {
+                    var searchValue = $("#orderSearch").val().toLowerCase();
+                    var statusValue = $("#statusFilter").val();
 
-        <script src="./Bootstrap/js/bootstrap.bundle.min.js"></script>
+                    $("#orderTable tr").filter(function () {
+                        var textMatch = $(this).text().toLowerCase().indexOf(searchValue) > -1;
+                        var statusMatch = statusValue === "" || $(this).find("td:nth-child(3)").text() === statusValue;
+                        $(this).toggle(textMatch && statusMatch);
+                    });
+                }
+
+                $("#orderSearch").on("keyup", filterOrders);
+                $("#statusFilter").on("change", filterOrders);
+            });
+        </script>
+        
     </body>
 </html>

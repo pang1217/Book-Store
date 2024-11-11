@@ -55,7 +55,7 @@
                         <td><%= fName %></td>
                         <td><%= lName %></td>
                         <td>
-                            <a href="./editEmployee.jsp?username=<%= user %>" class="btn btn-success">Edit </a>
+                            <a href="./editEmployee.jsp?username=<%= user %>" class="btn btn-primary">Edit </a>
                             <a href="./deleteEmployee.jsp?username=<%= user %>" class="btn btn-danger" onclick="return confirmDelete();">Delete</a>
                         </td>
                     </tr>

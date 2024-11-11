@@ -142,7 +142,7 @@
             out.println("<h1>Payment</h1>");
             out.println("<div class='d-flex gap-3'>");
             out.println("<a href='./payment.jsp?orderID=" + orderId + "' class='btn btn-primary'>Pay Now</a>");
-            out.println("<a href='./index.jsp' class='btn btn-secondary'>Pay Later</a>");
+            out.println("<a href='./index.jsp' class='btn btn-secondary'>Return to Homepage</a>");
             out.println("</div>");
             out.println("</div>");
             

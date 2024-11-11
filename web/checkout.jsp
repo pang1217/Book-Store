@@ -32,8 +32,8 @@
                         </div>
                         <div class="form-group">
                             <label for="phoneNO">เบอร์โทรศัพท์ : </label>
-                            <input class="form-control" type="tel" name="phoneNO" id="phoneNo" pattern="\d{3}-)?\d{3}-\d{4}" 
-                                    title="Please enter a phone number in the format: 123-456-7890"required>
+                            <input class="form-control" type="tel" name="phoneNO" id="phoneNo" pattern="0\d{9}" 
+                                    title="Please enter a phone number in the format: 0123456789" required>
                         </div>
                          <!-- Hidden inputs for book IDs and quantities will be added here -->
                         <div id="hiddenInputsContainer"></div>

@@ -60,15 +60,15 @@
                             <td><%= status%></td>
                             <td>
                                 <% if (status.equals("รอตรวจสอบการชำระเงิน")) {%>
-                                <a href="./orderDetail.jsp?orderID=<%= OrderID%>" class="btn btn-success">ดูข้อมูล</a>
-                                <a href="./paymentCheck.jsp?orderID=<%= OrderID%>" class="btn btn-success">ตรวจสอบการชำระเงิน</a>
+                                <a href="./orderDetail.jsp?orderID=<%= OrderID%>" class="btn btn-info">ดูข้อมูล</a>
+                                <a href="./paymentCheck.jsp?orderID=<%= OrderID%>" class="btn btn-primary">ตรวจสอบการชำระเงิน</a>
                                 <% } else if (status.equals("กำลังเตรียมจัดส่ง")) {%>
-                                <a href="./paymentCheck.jsp?orderID=<%= OrderID%>" class="btn btn-success">ดูข้อมูล</a>
-                                <a href="./updateTracking.jsp?orderID=<%=OrderID%>" class="btn btn-success">อัพเดทหมายเลขการจัดส่งสินค้า</a>
+                                <a href="./paymentCheck.jsp?orderID=<%= OrderID%>" class="btn btn-info">ดูข้อมูล</a>
+                                <a href="./updateTracking.jsp?orderID=<%=OrderID%>" class="btn btn-primary">อัพเดทหมายเลขการจัดส่งสินค้า</a>
                                 <% } else if (status.equals("จัดส่ง")) {%>
-                                <a href="./paymentCheck.jsp?orderID=<%= OrderID%>" class="btn btn-success">ดูข้อมูล</a>
+                                <a href="./paymentCheck.jsp?orderID=<%= OrderID%>" class="btn btn-info">ดูข้อมูล</a>
                                 <% } else if (status.equals("ยกเลิก") || status.equals("รอชำระ")) {%>
-                                <a href="./orderDetail.jsp?orderID=<%= OrderID%>" class="btn btn-success">ดูข้อมูล</a>
+                                <a href="./orderDetail.jsp?orderID=<%= OrderID%>" class="btn btn-info">ดูข้อมูล</a>
                                 <% } %>
                             </td>
                         </tr>
