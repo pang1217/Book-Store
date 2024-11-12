@@ -59,7 +59,7 @@
                         <% } %>
                         <td>
                             <a href="./editProduct.jsp?bookid=<%= bookid %>" class="btn btn-primary">Edit </a>
-                            <!--<a href="./deleteProduct.jsp?bookid=<%= bookid %>" class="btn btn-danger" onclick="return confirmDelete();">Delete</a>-->
+                            <a href="./deleteProduct.jsp?bookid=<%= bookid %>" class="btn btn-danger" onclick="return confirmDelete();">Delete</a>
                         </td>
                     </tr>
                 <%

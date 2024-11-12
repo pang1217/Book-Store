@@ -63,11 +63,11 @@
                         </div>
                         <div class="form-group">
                             <label for="qtyInStock">Quantity InStock:</label>
-                            <input type="number" class="form-control" name="qtyInStock" id="qtyInStock" value="<%= qtyInStock %>" min="0" required>
+                            <input type="number" class="form-control" name="qtyInStock" id="qtyInStock" value="<%= qtyInStock %>" min="0" step="1" required>
                         </div>
                         <div class="form-group">
                             <label for="priceDown">Price Down:</label>
-                            <input type="number" class="form-control" name="priceDown" id="priceDown" value="<%= priceDown %>" min="0" required>
+                            <input type="number" class="form-control" name="priceDown" id="priceDown" value="<%= priceDown %>" min="0" step="0.01" required>
                         </div>
                         <div class="form-group">
                             <label for="description">Description:</label>

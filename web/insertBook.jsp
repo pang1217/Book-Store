@@ -54,7 +54,7 @@
                         
                         <div class="form-group">
                             <label for="price">Price Down :</label>
-                            <input type="number" class="form-control" name="priceDown" id="priceDown" placeholder="0" min="0" step="0.01">
+                            <input type="number" class="form-control" name="priceDown" id="priceDown" placeholder="0" min="0" step="0.01" required>
                         </div>
                         
                         <div class="form-group">

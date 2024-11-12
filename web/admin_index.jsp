@@ -9,6 +9,7 @@
         <script src="./jquery/jquery-3.6.0.min"></script>
     </head>
     <body>
+        <jsp:include page="./template/showStat.jsp"></jsp:include>
         <div class="container">
             <h1 class="pt-3">Dashboard</h1>
             <div class="row">
@@ -38,6 +39,7 @@
                         }
                     }
                 %>
+                
                 <%if (isAdmin) {%>
                 <!-- Register employee (for admin)-->
                 <div class="col-md-4 col-xl-3 pb-3">
