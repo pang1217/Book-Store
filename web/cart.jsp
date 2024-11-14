@@ -15,7 +15,7 @@
         if(user != null){
     %>
     <div class="container my-5">
-        <h1>Your Cart</h1>
+        <h1>ตะกร้าสินค้า</h1>
 
         <table class="table" id="cartTable">
             <thead>
@@ -35,8 +35,8 @@
         </table>
 
         <div class="text-end">
-            <h4 id="grandTotal">Grand Total: 0 Bath</h4>
-            <button class="btn btn-success mt-3" onclick="goToCheckout()">Checkout</button>
+            <h4 id="grandTotal">สรุปยอดรวม : 0 บาท</h4>
+            <button class="btn btn-success mt-3" onclick="goToCheckout()">สั่งซื้อ</button>
         </div>
     </div>
     <%
@@ -59,8 +59,8 @@
             allOutOfStock = true; // Reset the out-of-stock flag
 
             if (cart.length === 0) {
-                cartTableBody.innerHTML = "<tr><td colspan='7'>Your cart is empty.</td></tr>";
-                document.getElementById("grandTotal").innerText = "Grand Total: 0 Bath";
+                cartTableBody.innerHTML = "<tr><td colspan='7'>ไม่มีสินค้าในตะกร้า</td></tr>";
+                document.getElementById("grandTotal").innerText = "สรุปยอดรวม: 0 บาท";
                 document.querySelector(".btn-success").disabled = true; // Disable checkout button if cart is empty
             } else {
                 cart.forEach(function(item, index) {
@@ -99,19 +99,19 @@
                                 "<td><div class='text-center'><img src='image?bookid=" + id + "' alt='Book Image' style='width: 100px; height: auto;'></div></td>" +
                                 "<td>" + book.title + "</td>" +
                                 "<td>" + book.author + "</td>" +
-                                "<td>" + (isDiscounted ? "<span>" + book.priceDown + " Bath</span><br><span class='text-decoration-line-through'>" + book.price + " Bath</span>" : book.price + " Bath") + "</td>" +
+                                "<td>" + (isDiscounted ? "<span>" + book.priceDown + " Bath</span><br><span class='text-decoration-line-through'>" + book.price + " บาท</span>" : book.price + " บาท") + "</td>" +
                                 "<td>" +
                                     (outOfStock ? 
                                     "<span class='text-danger'>Out of stock</span>" :
                                     "<input type='number' min='1' value='" + quantity + "' max='" + book.qtyInStock + "' onchange='updateQuantity(" + index + ", this.value)' style='width: 60px;'>") +
                                 "</td>" +
-                                "<td>" + total.toFixed(2) + " Bath</td>" +
+                                "<td>" + total.toFixed(2) + " บาท</td>" +
                                 "<td><button class='btn btn-danger btn-sm' onclick='removeItem(" + index + ")'>Delete</button></td>";
 
                             cartTableBody.appendChild(row);
 
                             // Update grand total
-                            document.getElementById("grandTotal").innerText = "Grand Total: " + grandTotal.toFixed(2) + " Bath";
+                            document.getElementById("grandTotal").innerText = "สรุปยอดรวม : " + grandTotal.toFixed(2) + " บาท";
 
                             // Enable or disable the checkout button based on stock status
                             document.querySelector(".btn-success").disabled = allOutOfStock;

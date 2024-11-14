@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Payment</title>
+        <title>อัพเดทหมายเลขพัสดุ</title>
         <link rel="stylesheet" href="./Bootstrap/css/bootstrap.min.css">
         <script>
             function confirmCheckTracking() {
@@ -15,7 +15,7 @@
     <body>
         <jsp:include page="./template/navbar.jsp"></jsp:include>
             <div class="container mt-5">
-                <h1>ตรวจสอบการชำระเงิน</h1>
+                <h1>อัพเดทหมายเลขพัสดุ</h1>
                 <hr>
             <%
                 request.setCharacterEncoding("UTF-8");

@@ -18,8 +18,10 @@
             }
         %>
         <section class="container mt-3">
-            <h1>Order Summary</h1>
+            <h1>สรุปคำสั่งซื้อ</h1>
+            <hr>
             <form id="orderForm" action="confirmOrder.jsp" method="post">
+                <label>กรอกที่อยู่ในการจัดส่ง : </label>
                 <div class="d-flex justify-content-between">
                     <div class="w-25">
                         <div class="form-group">
@@ -57,8 +59,8 @@
                         </table>
 
                         <div class="text-end">
-                            <h4 id="grandTotal">Grand Total: 0 Bath</h4>
-                            <button class="btn btn-success mt-3" >Place Order</button>
+                            <h4 id="grandTotal">สรุปยอดรวม : 0 บาท</h4>
+                            <button class="btn btn-success mt-3" >ยืนยันการสั่งซื้อ</button>
                         </div>
 
                     </div>
@@ -77,8 +79,8 @@
                 grandTotal = 0; // Reset grand total
 
                 if (cart.length === 0) {
-                    cartTableBody.innerHTML = "<tr><td colspan='7'>Your cart is empty.</td></tr>";
-                    document.getElementById("grandTotal").innerText = "Grand Total: 0 Bath";
+                    cartTableBody.innerHTML = "<tr><td colspan='7'>ไม่มีสินค้าในตะกร้า</td></tr>";
+                    document.getElementById("grandTotal").innerText = "สรุปยอดรวม : 0 บาท";
                 } else {
                     cart.forEach(function (item, index) {
                         const id = item.id;
@@ -103,9 +105,9 @@
                                             "<td><div class='text-center'><img src='image?bookid=" + id + "' alt='Book Image' style='width: 100px; height: auto;'></div></td>" +
                                             "<td>" + book.title + "</td>" +
                                             "<td>" + book.author + "</td>" +
-                                            "<td>" + (isDiscounted ? "<span>" + book.priceDown + " Bath</span><br><span class='text-decoration-line-through'>" + book.price + " Bath</span>" : book.price + " Bath") + "</td>" +
+                                            "<td>" + (isDiscounted ? "<span>" + book.priceDown + " บาท</span><br><span class='text-decoration-line-through'>" + book.price + " บาท</span>" : book.price + " Bath") + "</td>" +
                                             "<td>" + quantity + "</td>" +
-                                            "<td>" + total.toFixed(2) + " Bath</td>";
+                                            "<td>" + total.toFixed(2) + " บาท</td>";
 
                                     cartTableBody.appendChild(row);
                                     
@@ -122,7 +124,7 @@
                                     hiddenInputsContainer.appendChild(hiddenId);
                                     hiddenInputsContainer.appendChild(hiddenQty);
                                     // Update grand total
-                                    document.getElementById("grandTotal").innerText = "Grand Total: " + grandTotal.toFixed(2) + " Bath";
+                                    document.getElementById("grandTotal").innerText = "สรุปยอดรวม : " + grandTotal.toFixed(2) + " บาท";
                                 })
                                 .catch(function (error) {
                                     console.error("Error fetching book details:", error);
